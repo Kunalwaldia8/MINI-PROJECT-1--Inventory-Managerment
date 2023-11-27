@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>update</title>
+    <style>
+        *{
+            margin: 10px;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1>Update Product</h1>
+    <form method="post" action="/updateform/<%=result[0].id%>?_method=patch">
+        <br>
+        <br>
+        <h2>Product name :- <%=result[0].product%></h2>
+        <label for="stock">enter new quantity &nbsp;</label>
+        <input type="number" id="stock" placeholder="<%=result[0].stock%>" name="stock">
+
+        <button>submit</button>
+    </form>
+</body>
+</html>

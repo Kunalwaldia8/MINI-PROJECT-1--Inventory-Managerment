@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Product</title>
+    <style>
+        input {
+            margin: 5px;
+            padding: 5px;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>ADD Product</h1>
+    <form method="post" action=<%=`/newProduct`  %>>
+        
+        <input type="text" placeholder="product name" name="product">
+
+        <input type="number" placeholder="quantity" name="stock">
+
+        <br>
+        <br>
+
+        <input type="number" placeholder="cost price of product" name="cost_price">
+
+        <input type="number" placeholder="selling price of product" name="sold_price">
+
+        <br><br>
+        <button>submit</button>
+    </form>
+</body>
+
+</html>

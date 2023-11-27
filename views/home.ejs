@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        *{
+            margin: 2px;
+            padding: 5px;
+
+        }
+        table{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <form method="get" action="/newProduct"> <button>Add</button></form>
+    <br>
+    <form method="get" action="/products"> <button>Products</button></form>
+    <br>
+    <form method="get" action="/update"> <button>update</button></form>
+    <br>
+    <form method="get" action="/delete"> <button>Delete</button></form>
+    <br>
+    <div >
+       <h2> Recently Added Products</h2>
+       <table>
+          
+            <tr>
+                <th>serial no</th>
+                <th>Product</th>
+                <th>Stock</th>
+                <th>Cost Price</th>
+                <th>Sold Price</th>
+            </tr>
+           
+        
+        <% count=0 %>
+        <% for(entry of result){ %>
+                <tr>
+                    <td>
+                        <%= ++count %>
+                    </td>
+                    <td>
+                        <%= entry.product %>
+                    </td>
+                    <td>
+                        <%= entry.stock %>
+                    </td>
+                    <td>
+                        <%= entry.cost_price %>
+                    </td>
+                    <td>
+                        <%= entry.sold_price %>
+                    </td>
+                </tr>
+                <%}%>
+                
+                
+            </table>
+    </div>
+    <br>
+    <br>
+    <div >Latest Sales</div>
+</body>
+</html>

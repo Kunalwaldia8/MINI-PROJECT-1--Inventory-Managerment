@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <style>
+        table,
+        tr,
+        th ,td{
+            border: 3px solid black;
+        }
+        td{
+            margin: 10px;
+            padding: 10px;
+
+        }
+        div,h1{
+            display: flex;
+            justify-content: center;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <h1>All Products</h1>
+    <div>
+        <table>
+            
+            <tr>
+                <th>serial no</th>
+                <th>Product</th>
+                <th>Stock</th>
+                <th>Cost Price</th>
+                <th>Sold Price</th>
+                <th>Action</th>
+            </tr>
+            <% count=0 %>
+            <% for(entry of result){ %>
+                    <tr>
+                        <td>
+                            <%= ++count %>
+                        </td>
+                        <td>
+                            <%= entry.product %>
+                        </td>
+                        <td>
+                            <%= entry.stock %>
+                        </td>
+                        <td>
+                            <%= entry.cost_price %>
+                        </td>
+                        <td>
+                            <%= entry.sold_price %>
+                        </td>
+                        <td>
+                            <button><a href="/updateform/<%=entry.id%>">Update</a> </button> <br><br>
+                            <form method="post" action="/delete/<%=entry.id%>?_method=delete">
+                                <button>Delete </button>
+                            </form>
+                            </td>
+                    </tr>
+                    <%}%>
+                    
+                    
+                </table>
+                
+    </div>
+            </body>
+            
+            </html>
