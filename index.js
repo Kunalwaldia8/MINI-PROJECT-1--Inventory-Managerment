@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const mysql = require("mysql");
-const alert = require("alert");
 const { v4: uuidv4 } = require('uuid');
 var methodOverride = require('method-override');
 
@@ -30,7 +29,7 @@ app.get("/", (req, res) => {
     try {
         connection.query(q, (err, result) => {
             if(err) throw err;
-            console.log(result);
+            // console.log(result);
             res.render("home.ejs",{result});
         });
     }

@@ -5,23 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>update</title>
-    <style>
-        *{
-            margin: 10px;
-            
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/style4.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
+    <div class="main_box">
+        <nav class="navbar">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">Inventory Management</span>
+            </div>
+        </nav>
+
+    <div class="container">
+
     <h1>Update Product</h1>
+        <div class="form">
     <form method="post" action="/updateform/<%=result[0].id%>?_method=patch">
         <br>
         <br>
         <h2>Product name :- <%=result[0].product%></h2>
+        <br>
         <label for="stock">enter new quantity &nbsp;</label>
+        
         <input type="number" id="stock" placeholder="<%=result[0].stock%>" name="stock">
-
-        <button>submit</button>
+        <br>
+        <br>
+        <br>
+        <button class="btn btn-secondary">submit</button>
     </form>
+   </div>
+</div>
+
+</div>
 </body>
 </html>

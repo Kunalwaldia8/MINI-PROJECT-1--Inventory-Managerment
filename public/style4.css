@@ -1,0 +1,38 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: "Poppins", sans-serif;
+}
+
+.main_box{
+    background-image: url(14.jpg);
+    height: 100vh;
+    background-size: cover;
+}
+
+.navbar{
+    background-color: rgba(248, 248, 248, 0.759);
+}
+
+h1{
+    text-align: center;
+}
+h2{
+    text-align: center;
+}
+
+input {
+    margin: 5px;
+    padding: 5px;
+    /* border: 2px solid black; */
+    border-radius: 10px;
+    background-color: rgba(248, 248, 248, 0.759);
+}
+.container{
+    position: relative;
+    top:30px
+}
+
+.form{
+    text-align: center;
+}
