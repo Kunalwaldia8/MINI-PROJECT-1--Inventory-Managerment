@@ -26,21 +26,41 @@ app.listen("8080", () => {
 //home page 
 app.get("/", (req, res) => {
     let q = `select * from products  order by c_time desc limit 5`;
+    let q2 = `select * from sell  order by c_time desc limit 5`;
     try {
         connection.query(q, (err, result) => {
-            if(err) throw err;
-            // console.log(result);
-            res.render("home.ejs",{result});
+            connection.query(q2,(err,result2)=>{
+                if (err) throw err;
+                // console.log(result);
+                res.render("home.ejs", { result ,result2});
+            })
+           
         });
     }
     catch (err) {
         console.log(err);
     }
-   
+
 });
 
 
 //*****Display Products operations******
+
+app.get("/showproducts", (req, res) => {
+    let q = `select * from products order by c_time asc`;
+    try {
+        connection.query(q, (err, result) => {
+            if (err) throw err;
+            res.render("showproducts.ejs", { result })
+
+        });
+
+    }
+    catch (err) {
+        console.log(err);
+    }
+});
+
 
 app.get("/products", (req, res) => {
     let q = `select * from products order by c_time asc`;
@@ -141,4 +161,55 @@ app.delete("/delete/:id", (req, res) => {
     catch (err) {
         console.log(err);
     }
+});
+
+
+//selling feature
+app.get("/sell", (req, res) => {
+    let q = `select * from products order by c_time asc`;
+    try {
+        connection.query(q, (err, result) => {
+            if (err) throw err;
+            res.render("sell.ejs", { result })
+
+        });
+
+    }
+    catch (err) {
+        console.log(err);
+    }
+});
+
+
+app.patch("/:id", (req, res) => {
+    let id = req.params.id;
+    let quantity = req.body.quantity;
+
+    let q = `select * from products where id='${id}'`;
+    connection.query(q, (err, result) => {
+        if (err) throw err;
+        if (result[0].stock > 0 && quantity < result[0].stock) {
+            let q2 = `update products
+            set stock=${result[0].stock - quantity} where id='${id}'`;
+            connection.query(q2, (err, result2) => {
+                if (err) throw err;
+            });
+        }
+    });
+
+
+    let resq = `select * from products where id='${id}'`;
+    connection.query(resq, (err, result) => {
+        if (err) throw err;
+        let product = result[0].product;
+        let cost = result[0].cost_price;
+        let sold = result[0].sold_price;
+        let q3 = `INSERT INTO sell (product ,stock,cost_price,sold_price,c_time)VALUES ('${product}',${quantity},${cost},${sold},NOW())`;
+        connection.query(q3, (err, res) => {
+            if (err) { console.log(err) }
+        });
+        res.redirect('back');
+    });
+
+
 });

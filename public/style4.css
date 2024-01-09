@@ -11,7 +11,27 @@
 }
 
 .navbar{
-    background-color: rgba(248, 248, 248, 0.759);
+    background-color: #e1eef7;
+}
+
+.logo{
+    height: 30px;
+    width: 30px;
+    position: relative;
+    left: 3px;
+}
+
+.second{
+    left: -15px;
+    top: 3px;
+    height: 38px;
+    width: 42px;
+}
+
+.user
+{
+    display: flex;
+    margin:0 60px;
 }
 
 h1{
